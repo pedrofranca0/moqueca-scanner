@@ -1,0 +1,22 @@
+// AST da expressão 2: porcao = (peixe + camarao + temperos) / pessoas;
+// Os parênteses não viram nós: eles só mudam o formato da árvore.
+digraph AST2 {
+  graph [ordering=out, nodesep=0.35, ranksep=0.42, margin=0.08, dpi=300, bgcolor="white"];
+  node  [fontname="Liberation Serif", fontsize=15, penwidth=1.2];
+  edge  [arrowhead=none, penwidth=1.2];
+
+  op_atrib [label="=",  shape=circle, width=0.45, fixedsize=true, style=filled, fillcolor="#dbe9f6", fontsize=18];
+  porcao   [label="porcao",   shape=box, style="rounded,filled", fillcolor="#fff2c2"];
+  op_div   [label="/",  shape=circle, width=0.45, fixedsize=true, style=filled, fillcolor="#dbe9f6", fontsize=18];
+  op_soma2 [label="+",  shape=circle, width=0.45, fixedsize=true, style=filled, fillcolor="#dbe9f6", fontsize=18];
+  pessoas  [label="pessoas",  shape=box, style="rounded,filled", fillcolor="#fff2c2"];
+  op_soma1 [label="+",  shape=circle, width=0.45, fixedsize=true, style=filled, fillcolor="#dbe9f6", fontsize=18];
+  temperos [label="temperos", shape=box, style="rounded,filled", fillcolor="#fff2c2"];
+  peixe    [label="peixe",    shape=box, style="rounded,filled", fillcolor="#fff2c2"];
+  camarao  [label="camarao",  shape=box, style="rounded,filled", fillcolor="#fff2c2"];
+
+  op_atrib -> porcao;   op_atrib -> op_div;
+  op_div   -> op_soma2; op_div   -> pessoas;
+  op_soma2 -> op_soma1; op_soma2 -> temperos;
+  op_soma1 -> peixe;    op_soma1 -> camarao;
+}

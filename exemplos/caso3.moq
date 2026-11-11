@@ -1,0 +1,3 @@
+porcao = (peixe + camarao + temperos) / pessoas;
+mostrador = porcao * 1.10;
+mostra mostrador;

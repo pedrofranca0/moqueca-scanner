@@ -1,0 +1,25 @@
+// AST da expressão 1: preco = custo + custo * lucro / 100 - desconto;
+// Círculos = operadores; amarelo = identificadores; verde = números.
+digraph AST1 {
+  graph [ordering=out, nodesep=0.35, ranksep=0.42, margin=0.08, dpi=300, bgcolor="white"];
+  node  [fontname="Liberation Serif", fontsize=15, penwidth=1.2];
+  edge  [arrowhead=none, penwidth=1.2];
+
+  op_atrib [label="=",  shape=circle, width=0.45, fixedsize=true, style=filled, fillcolor="#dbe9f6", fontsize=18];
+  preco    [label="preco",    shape=box, style="rounded,filled", fillcolor="#fff2c2"];
+  op_sub   [label="-",  shape=circle, width=0.45, fixedsize=true, style=filled, fillcolor="#dbe9f6", fontsize=20];
+  op_soma  [label="+",  shape=circle, width=0.45, fixedsize=true, style=filled, fillcolor="#dbe9f6", fontsize=18];
+  desconto [label="desconto", shape=box, style="rounded,filled", fillcolor="#fff2c2"];
+  custo1   [label="custo",    shape=box, style="rounded,filled", fillcolor="#fff2c2"];
+  op_div   [label="/",  shape=circle, width=0.45, fixedsize=true, style=filled, fillcolor="#dbe9f6", fontsize=18];
+  op_mult  [label="*",  shape=circle, width=0.45, fixedsize=true, style=filled, fillcolor="#dbe9f6", fontsize=20];
+  n100     [label="100",      shape=box, style="rounded,filled", fillcolor="#d9f0d3"];
+  custo2   [label="custo",    shape=box, style="rounded,filled", fillcolor="#fff2c2"];
+  lucro    [label="lucro",    shape=box, style="rounded,filled", fillcolor="#fff2c2"];
+
+  op_atrib -> preco;   op_atrib -> op_sub;
+  op_sub   -> op_soma; op_sub   -> desconto;
+  op_soma  -> custo1;  op_soma  -> op_div;
+  op_div   -> op_mult; op_div   -> n100;
+  op_mult  -> custo2;  op_mult  -> lucro;
+}
